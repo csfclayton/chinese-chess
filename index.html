@@ -217,125 +217,6 @@
       animation: pulseCapture 1.1s infinite ease-in-out;
     }
 
-    body {
-      font-family: 'Inter', 'Noto Serif TC', serif;
-      background-color: #1c1917;
-      background-image: radial-gradient(circle at 50% 0%, #292524 0%, #141210 100%);
-      color: #f5f5f4;
-      overflow-x: hidden;
-      touch-action: manipulation;
-    }
-
-    .font-serif-tc {
-      font-family: 'Noto Serif TC', serif;
-    }
-
-    /* 棋盤木紋質感 */
-    .board-wood {
-      background: linear-gradient(135deg, #ecc996 0%, #dca868 50%, #cfa05e 100%);
-      box-shadow: 
-        0 20px 50px rgba(0, 0, 0, 0.7),
-        inset 0 0 0 3px #6b3b18,
-        inset 0 0 25px rgba(92, 50, 20, 0.35);
-      border: 6px solid #4a260d;
-      position: relative;
-    }
-
-    /* 暗棋棋盤格子 */
-    .dark-chess-cell {
-      background: linear-gradient(145deg, #e5be87, #d3a163);
-      box-shadow: inset 0 0 0 1.5px #78441e, inset 2px 2px 5px rgba(255,255,255,0.25);
-    }
-
-    /* 擬真立體象棋棋子 */
-    .chess-piece {
-      border-radius: 9999px;
-      background: radial-gradient(circle at 32% 30%, #fff8eb 0%, #f5e2c1 65%, #d6b17c 100%);
-      box-shadow: 
-        0 4px 6px rgba(0, 0, 0, 0.45),
-        0 2px 0 #9c6b34,
-        inset 0 1px 2px rgba(255, 255, 255, 0.9);
-      transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.16s ease;
-      user-select: none;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .chess-piece::after {
-      content: '';
-      position: absolute;
-      inset: 9%;
-      border-radius: 9999px;
-      border: 1.5px solid currentColor;
-      opacity: 0.75;
-      pointer-events: none;
-    }
-
-    .chess-piece.piece-red {
-      color: #b91c1c;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.7);
-    }
-
-    .chess-piece.piece-black {
-      color: #18181b;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.6);
-    }
-
-    /* 暗棋未翻開背面 */
-    .chess-piece.piece-hidden {
-      background: radial-gradient(circle at 35% 30%, #854d27 0%, #5e3214 70%, #3d1e09 100%);
-      box-shadow: 
-        0 4px 7px rgba(0, 0, 0, 0.55),
-        0 2px 0 #2b1405,
-        inset 0 1px 2px rgba(255, 215, 160, 0.35);
-      color: #d4a366;
-    }
-
-    .chess-piece.piece-hidden::after {
-      border: 1.5px dashed rgba(232, 195, 142, 0.45);
-      inset: 12%;
-    }
-
-    /* 選中棋子浮起效果 */
-    .piece-selected {
-      transform: translateY(-5px) scale(1.08);
-      box-shadow: 
-        0 10px 18px rgba(0, 0, 0, 0.55),
-        0 0 0 3px #f59e0b,
-        0 3px 0 #9c6b34 !important;
-      z-index: 30;
-    }
-
-    /* 最後一步高亮 */
-    .last-move-ring {
-      box-shadow: 0 0 0 2.5px rgba(59, 130, 246, 0.85), inset 0 0 8px rgba(59, 130, 246, 0.4);
-      border-radius: 9999px;
-    }
-
-    /* 可移動提示點 */
-    .valid-move-dot {
-      width: 28%;
-      height: 28%;
-      border-radius: 9999px;
-      background-color: rgba(22, 163, 74, 0.85);
-      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.75);
-      pointer-events: none;
-      animation: pulseDot 1.4s infinite ease-in-out;
-    }
-
-    /* 可吃子外框提示 */
-    .valid-capture-ring {
-      position: absolute;
-      inset: -3px;
-      border-radius: 9999px;
-      border: 3px solid #ef4444;
-      box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
-      pointer-events: none;
-      animation: pulseCapture 1.2s infinite ease-in-out;
-    }
-
     @keyframes pulseDot {
       0%, 100% { transform: scale(0.92); opacity: 0.85; }
       50% { transform: scale(1.15); opacity: 1; }
@@ -456,38 +337,32 @@
             <div class="flex items-center gap-3 border-b border-stone-800/90 pb-3.5">
               <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-red-800 to-red-950 border border-red-500/40 flex items-center justify-center font-serif-tc text-amber-100 font-black text-base shadow">創</span>
               <div>
-                <h3 class="text-lg font-bold text-amber-100">開設新對戰房間</h3>
-                <p class="text-[11px] text-stone-400">自訂棋局規則與限時模式</p>
+                <h3 class="text-lg font-bold text-amber-100">建立新對戰房間</h3>
+                <p class="text-[11px] text-stone-400">設定對戰模式與計時規則</p>
               </div>
             </div>
 
-            <!-- 遊戲模式選擇 -->
+            <!-- 模式選擇 -->
             <div class="space-y-2.5">
               <label class="block text-xs font-semibold uppercase tracking-wider text-amber-200/70">1. 選擇對戰模式</label>
-              <div class="grid grid-cols-2 gap-3">
-                <button type="button" data-mode="standard" class="mode-option active-mode flex flex-col items-start p-3.5 rounded-2xl border-2 border-amber-500 bg-amber-500/15 text-amber-100 transition text-left shadow-md">
-                  <div class="flex items-center justify-between w-full">
-                    <span class="font-serif-tc font-bold text-base">正常象棋</span>
-                    <span class="text-xs text-amber-300">帥</span>
-                  </div>
-                  <span class="text-[11px] text-stone-300 mt-1">9×10 傳統全盤對弈</span>
+              <div class="grid grid-cols-2 gap-2.5">
+                <button type="button" data-mode="standard" class="mode-option active-mode p-3 rounded-2xl border border-amber-500 bg-amber-500/15 text-amber-100 text-left transition">
+                  <div class="font-bold text-sm">正常象棋</div>
+                  <div class="text-[11px] text-stone-400 mt-0.5">9×10 標準傳統規則</div>
                 </button>
-                <button type="button" data-mode="dark" class="mode-option flex flex-col items-start p-3.5 rounded-2xl border-2 border-stone-700/80 bg-stone-900/70 text-stone-300 hover:border-stone-600 transition text-left">
-                  <div class="flex items-center justify-between w-full">
-                    <span class="font-serif-tc font-bold text-base">暗棋（盲棋）</span>
-                    <span class="text-xs text-stone-400">漢</span>
-                  </div>
-                  <span class="text-[11px] text-stone-400 mt-1">4×8 翻棋逐格移動</span>
+                <button type="button" data-mode="dark" class="mode-option p-3 rounded-2xl border border-stone-700 bg-stone-800/60 text-stone-300 text-left transition">
+                  <div class="font-bold text-sm">暗棋（盲棋）</div>
+                  <div class="text-[11px] text-stone-400 mt-0.5">4×8 翻棋逐格移動</div>
                 </button>
               </div>
             </div>
 
-            <!-- 盲棋階級規則選擇（僅在選擇暗棋時顯示） -->
+            <!-- 盲棋階級規則選擇（僅在選擇暗棋時顯示，預設車馬炮大） -->
             <div id="darkRuleWrapper" class="hidden space-y-2.5">
               <label for="darkRuleSelect" class="block text-xs font-semibold uppercase tracking-wider text-amber-200/70">盲棋吃子階級規則</label>
               <select id="darkRuleSelect" class="w-full px-4 py-3 rounded-2xl bg-stone-900/90 border border-amber-500/40 text-amber-100 text-sm focus:outline-none focus:border-amber-500 transition shadow-inner">
+                <option value="chariot_high" selected>車馬炮大：公 &gt; 車 &gt; 馬 &gt; 炮 &gt; 士 &gt; 象 &gt; 卒（卒吃公）</option>
                 <option value="classic">傳統順序：公 &gt; 士 &gt; 象 &gt; 車 &gt; 馬 &gt; 炮 &gt; 卒（卒吃公）</option>
-                <option value="chariot_high">車馬炮大：公 &gt; 車 &gt; 馬 &gt; 炮 &gt; 士 &gt; 象 &gt; 卒（卒吃公）</option>
               </select>
             </div>
 
@@ -504,9 +379,14 @@
             </div>
           </div>
 
-          <button id="btnCreateRoom" class="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-red-700 via-red-600 to-amber-600 hover:from-red-600 hover:to-amber-500 text-white font-bold text-base shadow-lg shadow-red-950/60 border border-amber-400/30 transition transform active:scale-[0.98] flex items-center justify-center gap-2">
-            <span>⚔️ 建立房間並獲取邀請碼</span>
-          </button>
+          <div class="space-y-2.5">
+            <button id="btnCreateRoom" class="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-red-700 via-red-600 to-amber-600 hover:from-red-600 hover:to-amber-500 text-white font-bold text-base shadow-lg shadow-red-950/60 border border-amber-400/30 transition transform active:scale-[0.98] flex items-center justify-center gap-2">
+              <span>⚔️ 建立連線房間（雙人對戰）</span>
+            </button>
+            <button id="btnStartAiGame" class="w-full py-3 px-4 rounded-2xl bg-stone-800/95 hover:bg-stone-700 text-amber-200 font-bold text-sm border border-amber-500/40 hover:border-amber-400 transition transform active:scale-[0.98] flex items-center justify-center gap-2 shadow">
+              <span>🤖 單人挑戰電腦（AI 練習模式）</span>
+            </button>
+          </div>
         </div>
 
         <!-- 加入現有房間卡片 -->
@@ -517,7 +397,7 @@
               <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-700 to-amber-950 border border-amber-500/40 flex items-center justify-center font-serif-tc text-amber-200 font-black text-base shadow">入</span>
               <div>
                 <h3 class="text-lg font-bold text-amber-100">加入好友的房間</h3>
-                <p class="text-[11px] text-stone-400">輸入代碼或直接點擊邀請連結</p>
+                <p class="text-[11px] text-stone-400">輸入代碼或直接掃描 QR Code 入座</p>
               </div>
             </div>
 
@@ -529,20 +409,41 @@
 
             <div class="p-4 rounded-2xl bg-stone-900/75 border border-amber-500/15 text-xs text-stone-400 space-y-2 leading-relaxed">
               <p class="text-amber-200/90 font-semibold flex items-center gap-1.5"><span>💡</span> 跨設備連線說明：</p>
-              <p>• 房主建立房間後，可點擊「顯示 QR Code」讓好友用手機掃碼，或傳送邀請連結。</p>
-              <p>• 好友掃碼或開啟連結即自動配對入座，雙方棋盤與計時器即時同步。</p>
-            </div>
-
-            <div class="p-4 rounded-2xl bg-stone-900/75 border border-amber-500/15 text-xs text-stone-400 space-y-2 leading-relaxed">
-              <p class="text-amber-200/90 font-semibold flex items-center gap-1.5"><span>💡</span> 跨設備連線說明：</p>
-              <p>• 房主建立房間後，點擊「複製邀請連結」傳送給另一部手機或電腦。</p>
-              <p>• 好友開啟連結即自動配對入座，雙方棋盤與計時器即時同步。</p>
+              <p>• 房主建立房間後，可用手機直接掃描房號旁的 QR Code，或傳送邀請連結。</p>
+              <p>• 進入對戰後自動啟用螢幕常亮保護，若意外重整頁面亦會自動重連回棋局。</p>
             </div>
           </div>
 
           <button id="btnJoinRoom" class="w-full py-3.5 px-4 rounded-2xl bg-stone-800/90 hover:bg-stone-700 border border-amber-500/40 hover:border-amber-400 text-amber-200 font-bold text-base shadow-lg transition transform active:scale-[0.98]">
             🚪 立即加入對戰
           </button>
+        </div>
+      </div>
+
+      <!-- 建議 1：本機歷史勝負戰績榜 -->
+      <div class="imperial-card rounded-3xl p-5 sm:p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-stone-800/90 pb-3">
+          <div class="flex items-center gap-2.5">
+            <span class="text-xl">🏆</span>
+            <div>
+              <h3 class="text-base font-bold text-amber-100">本機對戰勝負戰績榜</h3>
+              <p class="text-[11px] text-stone-400">自動記錄你的歷史勝負、勝率與最近交手紀錄</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div id="recordSummaryBadges" class="flex items-center gap-2 text-xs font-bold">
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-950/80 border border-emerald-600/40 text-emerald-300">勝 0</span>
+              <span class="px-2.5 py-1 rounded-lg bg-red-950/80 border border-red-600/40 text-red-300">負 0</span>
+              <span class="px-2.5 py-1 rounded-lg bg-stone-800 border border-stone-600 text-stone-300">和 0</span>
+              <span class="px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/40 text-amber-200">勝率 0%</span>
+            </div>
+            <button id="btnClearRecords" class="px-2.5 py-1 rounded-lg bg-stone-900 hover:bg-red-950/70 border border-stone-700 hover:border-red-700/60 text-stone-400 hover:text-red-300 text-xs transition">
+              清除紀錄
+            </button>
+          </div>
+        </div>
+        <div id="matchHistoryList" class="max-h-40 overflow-y-auto space-y-1.5 text-xs">
+          <p class="text-stone-500 text-center py-4">尚無對戰勝負紀錄，快開一局切磋吧！</p>
         </div>
       </div>
     </section>
@@ -680,6 +581,18 @@
               </div>
             </div>
 
+          </div>
+
+          <!-- 建議 2：暗棋模式「剩餘未翻開棋子統計表」 -->
+          <div id="darkRemainingPanel" class="hidden w-full max-w-[620px] mt-2.5 px-3.5 py-2.5 rounded-2xl imperial-card space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-bold text-amber-200/90">🎴 尚未翻開暗子統計（剩餘 <span id="darkHiddenTotalCount" class="font-mono text-amber-300">32</span> 隻）</span>
+              <span class="text-[10px] text-stone-400">助你推算場上潛在危機</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px]">
+              <div id="darkRemainingRedRow" class="flex flex-wrap items-center gap-1.5 bg-red-950/35 border border-red-800/30 rounded-xl px-2.5 py-1"></div>
+              <div id="darkRemainingBlackRow" class="flex flex-wrap items-center gap-1.5 bg-stone-900/80 border border-stone-700/50 rounded-xl px-2.5 py-1"></div>
+            </div>
           </div>
 
           <!-- 自己狀態列 (下方玩家) -->
@@ -926,12 +839,167 @@
     let soundEnabled = true;
     let lastRenderedMoveKey = null;
     let lastChatTimestamp = 0;
+    let isAiMode = false;
+    let aiThinkTimeout = null;
+    let wakeLockSentinel = null;
+    let hasRecordedCurrentGame = false;
 
-    // 取得玩家輸入的名稱（若未輸入則提供預設名稱）
-    function getLocalPlayerName(fallback = '無名棋士') {
+    const NAME_STORAGE_KEY = 'chinese_chess_player_name_v1';
+    const RECORDS_STORAGE_KEY = 'chinese_chess_match_records_v1';
+    const ACTIVE_ROOM_SESSION_KEY = 'chinese_chess_active_room_v1';
+
+    // 建議 1：強制驗證並取得玩家輸入的名稱
+    function requirePlayerName() {
       const inputEl = document.getElementById('playerNameInput');
       const val = inputEl ? inputEl.value.trim() : '';
-      return val || fallback;
+      if (!val) {
+        if (inputEl) {
+          inputEl.focus();
+          inputEl.classList.add('ring-2', 'ring-red-500', 'border-red-500');
+          setTimeout(() => inputEl.classList.remove('ring-2', 'ring-red-500', 'border-red-500'), 1800);
+        }
+        showToast('⚠️ 請先在上方輸入你的「棋手大名」再開始！', 'warn');
+        return null;
+      }
+      try {
+        localStorage.setItem(NAME_STORAGE_KEY, val);
+      } catch (e) {}
+      return val;
+    }
+
+    // 彈出掃碼入房專用的名字輸入框（若透過網址連結直接進入但本機尚未儲存名字）
+    function promptNameForDirectJoin(targetRoomId) {
+      openModal({
+        icon: '🪪',
+        title: `加入房間 ${targetRoomId}`,
+        desc: '請先輸入你的棋手大名，即可立即入座對戰：',
+        buttons: [
+          {
+            text: '取消',
+            className: 'px-4 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 font-bold text-sm',
+            onClick: () => document.getElementById('actionModal').classList.add('hidden')
+          },
+          {
+            text: '確認入座',
+            className: 'px-5 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm',
+            onClick: async () => {
+              const modalInput = document.getElementById('modalNameInput');
+              const nameVal = modalInput ? modalInput.value.trim() : '';
+              if (!nameVal) {
+                showToast('請輸入棋手大名！', 'warn');
+                if (modalInput) modalInput.focus();
+                return;
+              }
+              const mainInput = document.getElementById('playerNameInput');
+              if (mainInput) mainInput.value = nameVal;
+              try { localStorage.setItem(NAME_STORAGE_KEY, nameVal); } catch (e) {}
+              document.getElementById('actionModal').classList.add('hidden');
+              await joinRoom(targetRoomId);
+            }
+          }
+        ]
+      });
+      // 在 modalDesc 下方插入輸入框
+      const descEl = document.getElementById('modalDesc');
+      const inputHtml = document.createElement('input');
+      inputHtml.id = 'modalNameInput';
+      inputHtml.type = 'text';
+      inputHtml.maxLength = 12;
+      inputHtml.placeholder = '例如：趙子龍';
+      inputHtml.className = 'mt-3 w-full px-4 py-2.5 rounded-xl bg-stone-950 border border-amber-500/50 text-amber-100 text-center font-bold focus:outline-none focus:border-amber-400';
+      descEl.appendChild(inputHtml);
+      setTimeout(() => inputHtml.focus(), 80);
+    }
+
+    // 建議 1：本機勝負戰績記錄讀寫與渲染
+    function loadMatchRecords() {
+      try {
+        const raw = localStorage.getItem(RECORDS_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveMatchRecord(entry) {
+      try {
+        const list = loadMatchRecords();
+        list.unshift(entry);
+        if (list.length > 50) list.length = 50;
+        localStorage.setItem(RECORDS_STORAGE_KEY, JSON.stringify(list));
+        renderMatchRecordsUI();
+      } catch (e) {}
+    }
+
+    function renderMatchRecordsUI() {
+      const list = loadMatchRecords();
+      const summaryEl = document.getElementById('recordSummaryBadges');
+      const listEl = document.getElementById('matchHistoryList');
+      if (!summaryEl || !listEl) return;
+
+      let wins = 0, losses = 0, draws = 0;
+      list.forEach(item => {
+        if (item.result === 'win') wins++;
+        else if (item.result === 'lose') losses++;
+        else draws++;
+      });
+      const total = wins + losses + draws;
+      const winRate = total > 0 ? Math.round((wins / total) * 100) : 0;
+
+      summaryEl.innerHTML = `
+        <span class="px-2.5 py-1 rounded-lg bg-emerald-950/80 border border-emerald-600/40 text-emerald-300">勝 ${wins}</span>
+        <span class="px-2.5 py-1 rounded-lg bg-red-950/80 border border-red-600/40 text-red-300">負 ${losses}</span>
+        <span class="px-2.5 py-1 rounded-lg bg-stone-800 border border-stone-600 text-stone-300">和 ${draws}</span>
+        <span class="px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/40 text-amber-200">勝率 ${winRate}%</span>
+      `;
+
+      if (list.length === 0) {
+        listEl.innerHTML = '<p class="text-stone-500 text-center py-4">尚無對戰勝負紀錄，快開一局切磋吧！</p>';
+        return;
+      }
+
+      listEl.innerHTML = list.map(item => {
+        const badgeStyle = item.result === 'win'
+          ? 'bg-emerald-950 text-emerald-300 border-emerald-600/50'
+          : (item.result === 'lose'
+            ? 'bg-red-950 text-red-300 border-red-600/50'
+            : 'bg-stone-800 text-stone-300 border-stone-600');
+        const badgeText = item.result === 'win' ? '勝' : (item.result === 'lose' ? '負' : '和');
+        return `
+          <div class="flex items-center justify-between px-3 py-2 rounded-xl bg-stone-900/80 border border-stone-800">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="px-2 py-0.5 rounded-md text-[11px] font-black border shrink-0 ${badgeStyle}">${badgeText}</span>
+              <span class="font-bold text-amber-100 truncate">vs ${item.opponent}</span>
+              <span class="px-1.5 py-0.5 rounded bg-stone-800 text-stone-400 text-[10px] shrink-0">${item.modeLabel}</span>
+            </div>
+            <div class="flex items-center gap-2 shrink-0 text-[11px] text-stone-400">
+              <span class="hidden sm:inline">${item.reason}</span>
+              <span class="font-mono text-[10px] text-stone-500">${item.timeStr}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 建議 4：手機螢幕常亮鎖定 (Screen Wake Lock API)
+    async function requestScreenWakeLock() {
+      try {
+        if ('wakeLock' in navigator && !wakeLockSentinel) {
+          wakeLockSentinel = await navigator.wakeLock.request('screen');
+          wakeLockSentinel.addEventListener('release', () => {
+            wakeLockSentinel = null;
+          });
+        }
+      } catch (e) {}
+    }
+
+    async function releaseScreenWakeLock() {
+      try {
+        if (wakeLockSentinel) {
+          await wakeLockSentinel.release();
+          wakeLockSentinel = null;
+        }
+      } catch (e) {}
     }
 
     // ==================== 專業擬真音效引擎 (Tone.js) ====================
@@ -1064,10 +1132,10 @@
 
     // 暗棋等級表 (數值越大越大，1 為兵/卒，7 為帥/將)
     const DARK_RANK_TABLES = {
+      // 車馬炮大（預設）：公 > 車 > 馬 > 炮 > 士 > 象 > 卒
+      chariot_high: { K: 7, R: 6, H: 5, C: 4, A: 3, E: 2, P: 1 },
       // 傳統順序：公 > 士 > 象 > 車 > 馬 > 炮 > 卒
-      classic: { K: 7, A: 6, E: 5, R: 4, H: 3, C: 2, P: 1 },
-      // 車馬炮大：公 > 車 > 馬 > 炮 > 士 > 象 > 卒
-      chariot_high: { K: 7, R: 6, H: 5, C: 4, A: 3, E: 2, P: 1 }
+      classic: { K: 7, A: 6, E: 5, R: 4, H: 3, C: 2, P: 1 }
     };
 
     // 產生標準中文象棋記譜法（例如：炮二平五、馬八進七）
@@ -1494,6 +1562,18 @@
       return role === 'host' ? roomData.hostSide : roomData.guestSide;
     }
 
+    // 判斷目前是否輪到本機玩家行動
+    function isMyTurn() {
+      if (!roomData || roomData.status !== 'playing') return false;
+      const role = getMyRole();
+      const side = getMySide();
+      if (!role) return false;
+      if (roomData.turn === 'host' || roomData.turn === 'guest') {
+        return roomData.turn === role;
+      }
+      return side && roomData.turn === side;
+    }
+
     // 計算剩餘時間（結合上次更新時間戳即時推算）
     function getDisplayRemainingSeconds(side) {
       if (!roomData || roomData.timerMode === 'none') return null;
@@ -1522,6 +1602,9 @@
 
     // 建立新房間
     async function createRoom() {
+      const hostName = requirePlayerName();
+      if (!hostName) return;
+
       if (!currentUser || !db) {
         showToast('尚未連線至伺服器，請稍候再試', 'error');
         return;
@@ -1531,8 +1614,9 @@
       btn.disabled = true;
 
       try {
+        isAiMode = false;
+        hasRecordedCurrentGame = false;
         const roomId = generateRoomCode();
-        const hostName = getLocalPlayerName('紅方房主');
         const timerMode = document.getElementById('timerSelect').value;
         const darkRule = document.getElementById('darkRuleSelect').value;
         const initialTotal = timerMode.startsWith('total_')
@@ -1563,6 +1647,7 @@
           lastMove: null,
           lastChat: null,
           inCheckSide: null,
+          consecutiveChecks: { red: 0, black: 0 },
           winner: null,
           winReason: '',
           redTimeLeft: initialTotal,
@@ -1577,27 +1662,36 @@
         const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', roomId);
         await setDoc(roomRef, newRoom);
 
+        try { sessionStorage.setItem(ACTIVE_ROOM_SESSION_KEY, roomId); } catch (e) {}
         safeUpdateRoomUrl(roomId);
         subscribeToRoom(roomId);
         showToast(`房間 ${roomId} 建立成功！歡迎 ${hostName}`, 'success');
       } catch (err) {
         console.error('建立房間失敗:', err);
-        showToast('建立房間失敗，請檢查網路連線', 'error');
+        const errCode = err?.code || '';
+        if (errCode === 'permission-denied') {
+          showToast('權限不足：請至 Firebase Firestore「規則 (Rules)」將讀寫設為允許', 'error');
+        } else {
+          showToast(`建立房間失敗 (${errCode || err?.message || '網路異常'})`, 'error');
+        }
       } finally {
         btn.disabled = false;
       }
     }
 
     // 加入現有房間
-    async function joinRoom(rawCode) {
-      if (!currentUser || !db) {
-        showToast('尚未連線至伺服器，請稍候再試', 'error');
-        return;
-      }
-
+    async function joinRoom(rawCode, skipNameCheck = false) {
       const roomId = (rawCode || '').trim().toUpperCase();
       if (!roomId || roomId.length < 4) {
         showToast('請輸入有效的 4 位數房間代碼', 'warn');
+        return;
+      }
+
+      const playerName = skipNameCheck ? (document.getElementById('playerNameInput').value.trim()) : requirePlayerName();
+      if (!playerName) return;
+
+      if (!currentUser || !db) {
+        showToast('尚未連線至伺服器，請稍候再試', 'error');
         return;
       }
 
@@ -1605,10 +1699,13 @@
       btn.disabled = true;
 
       try {
+        isAiMode = false;
+        hasRecordedCurrentGame = false;
         const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', roomId);
         const snap = await getDoc(roomRef);
 
         if (!snap.exists()) {
+          try { sessionStorage.removeItem(ACTIVE_ROOM_SESSION_KEY); } catch (e) {}
           showToast('找不到該房間，請確認代碼是否正確', 'error');
           return;
         }
@@ -1623,15 +1720,14 @@
 
         if (data.hostId === currentUser.uid) {
           await updateDoc(roomRef, {
-            hostName: getLocalPlayerName(data.hostName || '房主'),
+            hostName: playerName,
             hostLastSeen: Date.now()
           });
           showToast('已重新連回你的房間', 'info');
         } else {
-          const guestName = getLocalPlayerName('黑方挑戰者');
           const updates = {
             guestId: currentUser.uid,
-            guestName,
+            guestName: playerName,
             guestLastSeen: Date.now()
           };
           if (data.status === 'waiting') {
@@ -1639,14 +1735,20 @@
             updates.turnStartTime = Date.now();
           }
           await updateDoc(roomRef, updates);
-          showToast(`成功加入房間，歡迎 ${guestName}！`, 'success');
+          showToast(`成功加入房間，歡迎 ${playerName}！`, 'success');
         }
 
+        try { sessionStorage.setItem(ACTIVE_ROOM_SESSION_KEY, roomId); } catch (e) {}
         safeUpdateRoomUrl(roomId);
         subscribeToRoom(roomId);
       } catch (err) {
         console.error('加入房間失敗:', err);
-        showToast('加入房間時發生錯誤', 'error');
+        const errCode = err?.code || '';
+        if (errCode === 'permission-denied') {
+          showToast('權限不足：請檢查 Firebase Firestore 安全規則', 'error');
+        } else {
+          showToast(`加入房間失敗 (${errCode || err?.message || '網路異常'})`, 'error');
+        }
       } finally {
         btn.disabled = false;
       }
@@ -1664,6 +1766,7 @@
       currentRoomId = roomId;
       lobbyView.classList.add('hidden');
       gameView.classList.remove('hidden');
+      requestScreenWakeLock();
 
       const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', roomId);
 
@@ -1701,7 +1804,6 @@
           } else if (roomData.lastMove.isFlip) {
             SoundFX.play('flip');
           } else {
-            // 判斷是否為吃子（陣亡清單增加）
             SoundFX.play('move');
           }
         }
@@ -1710,14 +1812,16 @@
         // 若對手提出悔棋或求和請求，顯示確認彈窗
         handleIncomingRequest();
 
-        // 若遊戲剛結束，播放勝負音效並彈出結算畫面
+        // 若遊戲剛結束，播放勝負音效、寫入戰績並彈出結算畫面
         if (roomData.status === 'finished' && prevStatus !== 'finished') {
+          recordFinishedMatch();
           const mySide = getMySide();
           if (roomData.winner === 'draw') SoundFX.play('draw');
           else if (mySide && roomData.winner === mySide) SoundFX.play('win');
           else SoundFX.play('lose');
           showGameOverModal();
         } else if (roomData.status !== 'finished') {
+          hasRecordedCurrentGame = false;
           const modal = document.getElementById('actionModal');
           if (!roomData.pendingRequest) {
             modal.classList.add('hidden');
@@ -1735,16 +1839,41 @@
 
       // 每 10 秒發送心跳更新在線狀態
       heartbeatInterval = setInterval(async () => {
-        if (!currentRoomId || !roomData || !currentUser) return;
+        if (!currentRoomId || !roomData || !currentUser || isAiMode) return;
         const role = getMyRole();
         if (!role) return;
         try {
           const field = role === 'host' ? 'hostLastSeen' : 'guestLastSeen';
           await updateDoc(roomRef, { [field]: Date.now() });
-        } catch (e) {
-          // 忽略背景心跳偶發錯誤
-        }
+        } catch (e) {}
       }, 10000);
+    }
+
+    // 寫入本機戰績記錄
+    function recordFinishedMatch() {
+      if (!roomData || hasRecordedCurrentGame) return;
+      hasRecordedCurrentGame = true;
+
+      const myRole = getMyRole();
+      const mySide = getMySide();
+      let result = 'draw';
+      if (roomData.winner !== 'draw' && mySide) {
+        result = roomData.winner === mySide ? 'win' : 'lose';
+      }
+      const opponent = isAiMode
+        ? '電腦 AI'
+        : (myRole === 'host' ? (roomData.guestName || '好友') : (roomData.hostName || '房主'));
+
+      const now = new Date();
+      const timeStr = `${now.getMonth() + 1}/${now.getDate()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+      saveMatchRecord({
+        result,
+        opponent,
+        modeLabel: roomData.mode === 'standard' ? '正常象棋' : '暗棋盲棋',
+        reason: roomData.winReason || '對局結束',
+        timeStr
+      });
     }
 
     // 離開房間返回大廳
@@ -1755,20 +1884,237 @@
       }
       if (timerInterval) clearInterval(timerInterval);
       if (heartbeatInterval) clearInterval(heartbeatInterval);
+      if (aiThinkTimeout) clearTimeout(aiThinkTimeout);
 
+      isAiMode = false;
       currentRoomId = null;
       roomData = null;
       selectedPos = null;
       validMoves = [];
 
+      try { sessionStorage.removeItem(ACTIVE_ROOM_SESSION_KEY); } catch (e) {}
       safeUpdateRoomUrl(null);
+      releaseScreenWakeLock();
 
       gameView.classList.add('hidden');
       lobbyView.classList.remove('hidden');
       document.getElementById('actionModal').classList.add('hidden');
+      renderMatchRecordsUI();
+    }
+
+    // ==================== 建議 3：單人 AI 人機對戰引擎 ====================
+    const AI_PIECE_VALUES = { K: 10000, R: 900, C: 450, H: 400, E: 200, A: 200, P: 100 };
+
+    function startAiGame() {
+      const hostName = requirePlayerName();
+      if (!hostName) return;
+
+      if (roomUnsubscribe) {
+        roomUnsubscribe();
+        roomUnsubscribe = null;
+      }
+      if (timerInterval) clearInterval(timerInterval);
+      if (heartbeatInterval) clearInterval(heartbeatInterval);
+      if (aiThinkTimeout) clearTimeout(aiThinkTimeout);
+
+      isAiMode = true;
+      hasRecordedCurrentGame = false;
+      currentRoomId = 'AI01';
+      selectedPos = null;
+      validMoves = [];
+
+      const timerMode = document.getElementById('timerSelect').value;
+      const darkRule = document.getElementById('darkRuleSelect').value;
+      const initialTotal = timerMode.startsWith('total_') ? parseInt(timerMode.split('_')[1], 10) : 0;
+      const isStandard = selectedMode === 'standard';
+      const initialBoard = isStandard ? createInitialStandardBoard() : createInitialDarkBoard();
+
+      roomData = {
+        roomId: 'AI01',
+        mode: selectedMode,
+        darkRule: isStandard ? null : darkRule,
+        timerMode,
+        status: 'playing',
+        hostId: currentUser ? currentUser.uid : 'local-human',
+        hostName,
+        guestId: 'ai-bot',
+        guestName: '深藍棋聖（AI）',
+        hostSide: isStandard ? 'red' : null,
+        guestSide: isStandard ? 'black' : null,
+        turn: isStandard ? 'red' : 'host',
+        boardJson: JSON.stringify(initialBoard),
+        historyJson: JSON.stringify([]),
+        moveLogs: [],
+        capturedRed: [],
+        capturedBlack: [],
+        lastMove: null,
+        lastChat: null,
+        inCheckSide: null,
+        consecutiveChecks: { red: 0, black: 0 },
+        winner: null,
+        winReason: '',
+        redTimeLeft: initialTotal,
+        blackTimeLeft: initialTotal,
+        turnStartTime: Date.now(),
+        hostLastSeen: Date.now(),
+        guestLastSeen: Date.now(),
+        pendingRequest: null
+      };
+
+      lobbyView.classList.add('hidden');
+      gameView.classList.remove('hidden');
+      requestScreenWakeLock();
+      timerInterval = setInterval(tickTimer, 1000);
+      renderGameUI();
+      showToast(`已開啟單人 AI 對戰，請 ${hostName} 先行！`, 'success');
+    }
+
+    async function applyRoomStateUpdate(updates) {
+      if (isAiMode) {
+        const prevStatus = roomData.status;
+        Object.assign(roomData, updates);
+        renderGameUI();
+
+        if (roomData.status === 'finished' && prevStatus !== 'finished') {
+          recordFinishedMatch();
+          const mySide = getMySide();
+          if (roomData.winner === 'draw') SoundFX.play('draw');
+          else if (mySide && roomData.winner === mySide) SoundFX.play('win');
+          else SoundFX.play('lose');
+          showGameOverModal();
+          return;
+        }
+
+        // 若輪到 AI 行動，延遲 650ms 模擬思考並自動走棋
+        const isAiTurn = roomData.status === 'playing' && (
+          roomData.turn === 'guest' ||
+          (roomData.guestSide && roomData.turn === roomData.guestSide)
+        );
+        if (isAiTurn) {
+          clearTimeout(aiThinkTimeout);
+          aiThinkTimeout = setTimeout(() => executeAiTurn(), 650);
+        }
+      } else {
+        const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', currentRoomId);
+        await updateDoc(roomRef, updates);
+      }
+    }
+
+    async function executeAiTurn() {
+      if (!isAiMode || !roomData || roomData.status !== 'playing') return;
+      const board = JSON.parse(roomData.boardJson);
+
+      if (roomData.mode === 'standard') {
+        const aiSide = roomData.guestSide || 'black';
+        let bestMove = null;
+        let bestScore = -Infinity;
+
+        for (let r = 0; r < 10; r++) {
+          for (let c = 0; c < 9; c++) {
+            const p = board[r][c];
+            if (!p || p.side !== aiSide) continue;
+            const moves = getLegalMovesStandard(board, r, c);
+            for (const m of moves) {
+              let score = (Math.random() - 0.5) * 18;
+              const target = board[m.r][m.c];
+              if (target) {
+                score += (AI_PIECE_VALUES[target.type] || 100) * 1.2;
+              }
+              // 鼓勵過河與控制中路
+              if (aiSide === 'black' && m.r >= 5) score += 15;
+              if (aiSide === 'red' && m.r <= 4) score += 15;
+              if (m.c >= 3 && m.c <= 5) score += 10;
+
+              // 模擬走棋檢查是否將軍
+              const cloned = board.map(row => row.map(cell => cell ? { ...cell } : null));
+              cloned[m.r][m.c] = cloned[r][c];
+              cloned[r][c] = null;
+              const oppSide = aiSide === 'red' ? 'black' : 'red';
+              if (isKingInCheck(cloned, oppSide)) score += 65;
+
+              if (score > bestScore) {
+                bestScore = score;
+                bestMove = { fromR: r, fromC: c, toR: m.r, toC: m.c };
+              }
+            }
+          }
+        }
+
+        if (bestMove) {
+          await executeStandardMove(board, bestMove.fromR, bestMove.fromC, bestMove.toR, bestMove.toC, aiSide);
+        }
+      } else {
+        // 暗棋 AI：優先高價值吃子，其次翻開暗棋，最後安全移動
+        const aiSide = roomData.guestSide;
+        const hiddenCells = [];
+        const captureActions = [];
+        const moveActions = [];
+
+        for (let r = 0; r < 8; r++) {
+          for (let c = 0; c < 4; c++) {
+            const cell = board[r][c];
+            if (!cell) continue;
+            if (!cell.revealed) {
+              hiddenCells.push({ r, c });
+            } else if (aiSide && cell.side === aiSide) {
+              const moves = getLegalMovesDark(board, r, c);
+              for (const m of moves) {
+                if (m.isCapture) {
+                  const target = board[m.r][m.c];
+                  captureActions.push({
+                    fromR: r, fromC: c, toR: m.r, toC: m.c,
+                    score: (AI_PIECE_VALUES[target.type] || 100) + Math.random() * 20
+                  });
+                } else {
+                  moveActions.push({ fromR: r, fromC: c, toR: m.r, toC: m.c });
+                }
+              }
+            }
+          }
+        }
+
+        if (captureActions.length > 0) {
+          captureActions.sort((a, b) => b.score - a.score);
+          const pick = captureActions[0];
+          await executeDarkMove(board, pick.fromR, pick.fromC, pick.toR, pick.toC, aiSide);
+        } else if (hiddenCells.length > 0) {
+          const pick = hiddenCells[Math.floor(Math.random() * hiddenCells.length)];
+          await executeDarkFlip(board, pick.r, pick.c, 'guest');
+        } else if (moveActions.length > 0) {
+          const pick = moveActions[Math.floor(Math.random() * moveActions.length)];
+          await executeDarkMove(board, pick.fromR, pick.fromC, pick.toR, pick.toC, aiSide);
+        }
+      }
     }
 
     // ==================== 計時器倒數與超時判定 ====================
+    function updateTimerDisplays() {
+      const topTimerBox = document.getElementById('topTimerBox');
+      const bottomTimerBox = document.getElementById('bottomTimerBox');
+      if (!topTimerBox || !bottomTimerBox || !roomData) return;
+
+      if (roomData.timerMode === 'none') {
+        topTimerBox.classList.add('hidden');
+        bottomTimerBox.classList.add('hidden');
+        return;
+      }
+
+      const mySide = getMySide();
+      const oppSide = mySide === 'red' ? 'black' : (mySide === 'black' ? 'red' : null);
+
+      topTimerBox.classList.remove('hidden');
+      bottomTimerBox.classList.remove('hidden');
+
+      const mySec = mySide ? getDisplayRemainingSeconds(mySide) : parseInt(roomData.timerMode.split('_')[1], 10);
+      const oppSec = oppSide ? getDisplayRemainingSeconds(oppSide) : parseInt(roomData.timerMode.split('_')[1], 10);
+
+      bottomTimerBox.textContent = formatSeconds(mySec);
+      topTimerBox.textContent = formatSeconds(oppSec);
+
+      bottomTimerBox.classList.toggle('text-red-400', mySec !== null && mySec <= 10);
+      topTimerBox.classList.toggle('text-red-400', oppSec !== null && oppSec <= 10);
+    }
+
     async function tickTimer() {
       if (!roomData || roomData.timerMode === 'none') return;
       updateTimerDisplays();
@@ -1780,14 +2126,12 @@
 
       const remain = getDisplayRemainingSeconds(activeTurn);
       if (remain !== null && remain <= 0) {
-        // 僅由輪到的一方或房主負責提交超時判負，避免重複寫入
         const mySide = getMySide();
-        if (mySide === activeTurn || (mySide === null && getMyRole() === 'host')) {
+        if (isAiMode || mySide === activeTurn || (mySide === null && getMyRole() === 'host')) {
           const winnerSide = activeTurn === 'red' ? 'black' : 'red';
           const loserName = activeTurn === 'red' ? '紅方' : '黑方';
-          const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', currentRoomId);
           try {
-            await updateDoc(roomRef, {
+            await applyRoomStateUpdate({
               status: 'finished',
               winner: winnerSide,
               winReason: `${loserName}思考超時判負`,
@@ -1798,49 +2142,6 @@
           }
         }
       }
-    }
-
-    function updateTimerDisplays() {
-      const topTimer = document.getElementById('topTimerBox');
-      const bottomTimer = document.getElementById('bottomTimerBox');
-
-      if (!roomData || roomData.timerMode === 'none') {
-        topTimer.classList.add('hidden');
-        bottomTimer.classList.add('hidden');
-        return;
-      }
-
-      const mySide = getMySide() || 'red';
-      const oppSide = mySide === 'red' ? 'black' : 'red';
-
-      const mySec = getDisplayRemainingSeconds(mySide);
-      const oppSec = getDisplayRemainingSeconds(oppSide);
-
-      bottomTimer.classList.remove('hidden');
-      topTimer.classList.remove('hidden');
-      bottomTimer.textContent = formatSeconds(mySec);
-      topTimer.textContent = formatSeconds(oppSec);
-
-      // 少於 10 秒紅色警示
-      bottomTimer.classList.toggle('text-red-400', mySec !== null && mySec <= 10);
-      bottomTimer.classList.toggle('border-red-500', mySec !== null && mySec <= 10);
-      topTimer.classList.toggle('text-red-400', oppSec !== null && oppSec <= 10);
-      topTimer.classList.toggle('border-red-500', oppSec !== null && oppSec <= 10);
-    }
-
-    // ==================== 棋盤互動與走法執行 ====================
-    function isMyTurn() {
-      if (!roomData || roomData.status !== 'playing' || !roomData.guestId) return false;
-      const role = getMyRole();
-      if (!role) return false;
-
-      if (roomData.mode === 'dark' && (!roomData.hostSide || !roomData.guestSide)) {
-        // 暗棋開局尚未翻出首子定色時，turn 為 'host' 或 'guest'
-        return roomData.turn === role;
-      }
-
-      const mySide = getMySide();
-      return mySide && roomData.turn === mySide;
     }
 
     // 點擊正常象棋格子 (r: 0..9, c: 0..8)
@@ -1856,10 +2157,10 @@
       }
 
       const board = JSON.parse(roomData.boardJson);
+      const piece = board[r][c];
       const mySide = getMySide();
-      const clickedPiece = board[r][c];
 
-      // 1. 若已選中棋子且點擊在合法目標格上 -> 執行移動/吃子
+      // 若已選中己方棋子且點擊合法目標格 -> 執行移動或吃子
       if (selectedPos) {
         const targetMove = validMoves.find(m => m.r === r && m.c === c);
         if (targetMove) {
@@ -1868,8 +2169,8 @@
         }
       }
 
-      // 2. 若點擊己方棋子 -> 選中並計算合法走法
-      if (clickedPiece && clickedPiece.side === mySide) {
+      // 點擊己方棋子 -> 切換選中並計算合法走法
+      if (piece && piece.side === mySide) {
         if (selectedPos && selectedPos.r === r && selectedPos.c === c) {
           selectedPos = null;
           validMoves = [];
@@ -1886,10 +2187,10 @@
       }
     }
 
-    async function executeStandardMove(board, fromR, fromC, toR, toC) {
+    async function executeStandardMove(board, fromR, fromC, toR, toC, overrideSide = null) {
       const movingPiece = board[fromR][fromC];
       const capturedPiece = board[toR][toC];
-      const mySide = getMySide();
+      const mySide = overrideSide || getMySide();
       const nextSide = mySide === 'red' ? 'black' : 'red';
 
       // 儲存悔棋歷史快照
@@ -1900,7 +2201,8 @@
         capturedRed: [...(roomData.capturedRed || [])],
         capturedBlack: [...(roomData.capturedBlack || [])],
         moveLogs: [...(roomData.moveLogs || [])],
-        lastMove: roomData.lastMove
+        lastMove: roomData.lastMove,
+        consecutiveChecks: { ...(roomData.consecutiveChecks || { red: 0, black: 0 }) }
       });
       if (history.length > 20) history.shift();
 
@@ -1928,9 +2230,15 @@
       board[toR][toC] = movingPiece;
       board[fromR][fromC] = null;
 
-      // 檢查是否將軍與是否絕殺/困斃
+      // 檢查是否將軍、連續將軍次數與是否絕殺/困斃
       const enemyInCheck = isKingInCheck(board, nextSide);
       const enemyHasMoves = hasAnyLegalMoveStandard(board, nextSide);
+
+      const prevChecks = roomData.consecutiveChecks || { red: 0, black: 0 };
+      const consecutiveChecks = {
+        red: mySide === 'red' ? (enemyInCheck ? (prevChecks.red || 0) + 1 : 0) : (prevChecks.red || 0),
+        black: mySide === 'black' ? (enemyInCheck ? (prevChecks.black || 0) + 1 : 0) : (prevChecks.black || 0)
+      };
 
       let status = 'playing';
       let winner = null;
@@ -1956,9 +2264,8 @@
       selectedPos = null;
       validMoves = [];
 
-      const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', currentRoomId);
       try {
-        await updateDoc(roomRef, {
+        await applyRoomStateUpdate({
           boardJson: JSON.stringify(board),
           historyJson: JSON.stringify(history),
           moveLogs,
@@ -1967,6 +2274,7 @@
           capturedBlack,
           lastMove: { from: { r: fromR, c: fromC }, to: { r: toR, c: toC } },
           inCheckSide: enemyInCheck ? nextSide : null,
+          consecutiveChecks,
           status,
           winner,
           winReason,
@@ -2002,82 +2310,7 @@
       if (cell && !cell.revealed) {
         selectedPos = null;
         validMoves = [];
-
-        const history = JSON.parse(roomData.historyJson || '[]');
-        history.push({
-          boardJson: roomData.boardJson,
-          turn: roomData.turn,
-          hostSide: roomData.hostSide,
-          guestSide: roomData.guestSide,
-          capturedRed: [...(roomData.capturedRed || [])],
-          capturedBlack: [...(roomData.capturedBlack || [])],
-          moveLogs: [...(roomData.moveLogs || [])],
-          lastMove: roomData.lastMove
-        });
-        if (history.length > 20) history.shift();
-
-        cell.revealed = true;
-        const revealedLabel = `${cell.side === 'red' ? '紅' : '黑'}${PIECE_NAMES[cell.side][cell.type]}`;
-        const moveLogs = [...(roomData.moveLogs || [])];
-        moveLogs.push({
-          step: moveLogs.length + 1,
-          side: cell.side,
-          text: `翻開【${revealedLabel}】(${r + 1},${c + 1})`
-        });
-
-        let hostSide = roomData.hostSide;
-        let guestSide = roomData.guestSide;
-
-        // 若尚未分配顏色，首翻棋子顏色即為翻棋者陣營
-        if (!hostSide || !guestSide) {
-          if (role === 'host') {
-            hostSide = cell.side;
-            guestSide = cell.side === 'red' ? 'black' : 'red';
-          } else {
-            guestSide = cell.side;
-            hostSide = cell.side === 'red' ? 'black' : 'red';
-          }
-          mySide = cell.side;
-        }
-
-        const nextSide = mySide === 'red' ? 'black' : 'red';
-        const enemyCanAct = hasAnyActionDark(board, nextSide);
-
-        let status = 'playing';
-        let winner = null;
-        let winReason = '';
-        if (!enemyCanAct) {
-          status = 'finished';
-          winner = mySide;
-          winReason = `${mySide === 'red' ? '紅方' : '黑方'}吃光或封鎖對手獲勝！`;
-        }
-
-        const now = Date.now();
-        let redTimeLeft = roomData.redTimeLeft;
-        let blackTimeLeft = roomData.blackTimeLeft;
-        if (roomData.timerMode.startsWith('total_') && roomData.turnStartTime && mySide) {
-          const elapsed = Math.floor((now - roomData.turnStartTime) / 1000);
-          if (mySide === 'red') redTimeLeft = Math.max(0, redTimeLeft - elapsed);
-          else blackTimeLeft = Math.max(0, blackTimeLeft - elapsed);
-        }
-
-        const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', currentRoomId);
-        await updateDoc(roomRef, {
-          boardJson: JSON.stringify(board),
-          historyJson: JSON.stringify(history),
-          moveLogs,
-          hostSide,
-          guestSide,
-          turn: nextSide,
-          lastMove: { from: { r, c }, to: { r, c }, isFlip: true },
-          status,
-          winner,
-          winReason,
-          redTimeLeft,
-          blackTimeLeft,
-          turnStartTime: now,
-          pendingRequest: null
-        });
+        await executeDarkFlip(board, r, c, role);
         return;
       }
 
@@ -2108,10 +2341,92 @@
       }
     }
 
-    async function executeDarkMove(board, fromR, fromC, toR, toC) {
+    async function executeDarkFlip(board, r, c, actorRole) {
+      const cell = board[r][c];
+      if (!cell || cell.revealed) return;
+
+      const history = JSON.parse(roomData.historyJson || '[]');
+      history.push({
+        boardJson: roomData.boardJson,
+        turn: roomData.turn,
+        hostSide: roomData.hostSide,
+        guestSide: roomData.guestSide,
+        capturedRed: [...(roomData.capturedRed || [])],
+        capturedBlack: [...(roomData.capturedBlack || [])],
+        moveLogs: [...(roomData.moveLogs || [])],
+        lastMove: roomData.lastMove
+      });
+      if (history.length > 20) history.shift();
+
+      cell.revealed = true;
+      SoundFX.play('flip');
+      const revealedLabel = `${cell.side === 'red' ? '紅' : '黑'}${PIECE_NAMES[cell.side][cell.type]}`;
+      const moveLogs = [...(roomData.moveLogs || [])];
+      moveLogs.push({
+        step: moveLogs.length + 1,
+        side: cell.side,
+        text: `翻開【${revealedLabel}】(${r + 1},${c + 1})`
+      });
+
+      let hostSide = roomData.hostSide;
+      let guestSide = roomData.guestSide;
+      let actorSide = actorRole === 'host' ? hostSide : guestSide;
+
+      // 若尚未分配顏色，首翻棋子顏色即為翻棋者陣營
+      if (!hostSide || !guestSide) {
+        if (actorRole === 'host') {
+          hostSide = cell.side;
+          guestSide = cell.side === 'red' ? 'black' : 'red';
+        } else {
+          guestSide = cell.side;
+          hostSide = cell.side === 'red' ? 'black' : 'red';
+        }
+        actorSide = cell.side;
+      }
+
+      const nextSide = actorSide === 'red' ? 'black' : 'red';
+      const enemyCanAct = hasAnyActionDark(board, nextSide);
+
+      let status = 'playing';
+      let winner = null;
+      let winReason = '';
+      if (!enemyCanAct) {
+        status = 'finished';
+        winner = actorSide;
+        winReason = `${actorSide === 'red' ? '紅方' : '黑方'}吃光或封鎖對手獲勝！`;
+      }
+
+      const now = Date.now();
+      let redTimeLeft = roomData.redTimeLeft;
+      let blackTimeLeft = roomData.blackTimeLeft;
+      if (roomData.timerMode.startsWith('total_') && roomData.turnStartTime && actorSide) {
+        const elapsed = Math.floor((now - roomData.turnStartTime) / 1000);
+        if (actorSide === 'red') redTimeLeft = Math.max(0, redTimeLeft - elapsed);
+        else blackTimeLeft = Math.max(0, blackTimeLeft - elapsed);
+      }
+
+      await applyRoomStateUpdate({
+        boardJson: JSON.stringify(board),
+        historyJson: JSON.stringify(history),
+        moveLogs,
+        hostSide,
+        guestSide,
+        turn: nextSide,
+        lastMove: { from: { r, c }, to: { r, c }, isFlip: true },
+        status,
+        winner,
+        winReason,
+        redTimeLeft,
+        blackTimeLeft,
+        turnStartTime: now,
+        pendingRequest: null
+      });
+    }
+
+    async function executeDarkMove(board, fromR, fromC, toR, toC, overrideSide = null) {
       const movingPiece = board[fromR][fromC];
       const capturedPiece = board[toR][toC];
-      const mySide = getMySide();
+      const mySide = overrideSide || getMySide();
       const nextSide = mySide === 'red' ? 'black' : 'red';
 
       const history = JSON.parse(roomData.historyJson || '[]');
@@ -2192,8 +2507,7 @@
       selectedPos = null;
       validMoves = [];
 
-      const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', currentRoomId);
-      await updateDoc(roomRef, {
+      await applyRoomStateUpdate({
         boardJson: JSON.stringify(board),
         historyJson: JSON.stringify(history),
         moveLogs,
@@ -2213,19 +2527,23 @@
 
     // ==================== 快捷聊天氣泡發送與顯示 ====================
     async function sendQuickChat(text) {
-      if (!currentRoomId || !roomData || !db) return;
+      if (!currentRoomId || !roomData) return;
       const role = getMyRole();
       if (!role) return;
       SoundFX.play('select');
+      const chatObj = {
+        fromRole: role,
+        text,
+        ts: Date.now()
+      };
+      if (isAiMode) {
+        displayChatBubble(chatObj);
+        return;
+      }
+      if (!db) return;
       const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', currentRoomId);
       try {
-        await updateDoc(roomRef, {
-          lastChat: {
-            fromRole: role,
-            text,
-            ts: Date.now()
-          }
-        });
+        await updateDoc(roomRef, { lastChat: chatObj });
       } catch (e) {
         console.error('發送表情失敗:', e);
       }
@@ -2260,6 +2578,42 @@
         showToast('目前沒有可悔棋的步數', 'warn');
         return;
       }
+
+      // 單人 AI 模式直接退回玩家上一步（連同 AI 回應一併退回）
+      if (isAiMode) {
+        clearTimeout(aiThinkTimeout);
+        let targetSnap = history.pop();
+        if (!isMyTurn() && history.length > 0) {
+          // 若 AI 尚未走完，只需退 1 步；若 AI 已走完輪到玩家，退 2 步回到玩家回合
+        } else if (history.length > 0) {
+          targetSnap = history.pop();
+        }
+        if (targetSnap) {
+          selectedPos = null;
+          validMoves = [];
+          const updates = {
+            boardJson: targetSnap.boardJson,
+            historyJson: JSON.stringify(history),
+            moveLogs: targetSnap.moveLogs || [],
+            turn: targetSnap.turn,
+            capturedRed: targetSnap.capturedRed,
+            capturedBlack: targetSnap.capturedBlack,
+            lastMove: targetSnap.lastMove || null,
+            inCheckSide: null,
+            turnStartTime: Date.now(),
+            pendingRequest: null
+          };
+          if (roomData.mode === 'dark') {
+            updates.hostSide = targetSnap.hostSide ?? null;
+            updates.guestSide = targetSnap.guestSide ?? null;
+          }
+          Object.assign(roomData, updates);
+          renderGameUI();
+          showToast('已退回至你的上一回合', 'info');
+        }
+        return;
+      }
+
       if (roomData.pendingRequest) {
         showToast('已有待處理的請求，請稍候', 'info');
         return;
@@ -2274,6 +2628,16 @@
 
     async function requestDraw() {
       if (!roomData || roomData.status !== 'playing' || !roomData.guestId) return;
+      if (isAiMode) {
+        clearTimeout(aiThinkTimeout);
+        await applyRoomStateUpdate({
+          status: 'finished',
+          winner: 'draw',
+          winReason: '與電腦 AI 協議和棋',
+          pendingRequest: null
+        });
+        return;
+      }
       if (roomData.pendingRequest) {
         showToast('已有待處理的請求，請稍候', 'info');
         return;
@@ -2303,11 +2667,11 @@
             className: 'px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm',
             onClick: async () => {
               document.getElementById('actionModal').classList.add('hidden');
+              clearTimeout(aiThinkTimeout);
               const mySide = getMySide();
               const winnerSide = mySide === 'red' ? 'black' : (mySide === 'black' ? 'red' : 'draw');
               const loserLabel = mySide === 'red' ? '紅方' : (mySide === 'black' ? '黑方' : '玩家');
-              const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', currentRoomId);
-              await updateDoc(roomRef, {
+              await applyRoomStateUpdate({
                 status: 'finished',
                 winner: winnerSide,
                 winReason: `${loserLabel}主動認輸`,
@@ -2390,6 +2754,8 @@
 
     async function rematchGame() {
       if (!roomData || !currentRoomId) return;
+      clearTimeout(aiThinkTimeout);
+      hasRecordedCurrentGame = false;
       const isStandard = roomData.mode === 'standard';
       const initialTotal = roomData.timerMode.startsWith('total_')
         ? parseInt(roomData.timerMode.split('_')[1], 10)
@@ -2403,8 +2769,7 @@
       selectedPos = null;
       validMoves = [];
 
-      const roomRef = doc(db, 'artifacts', appId, 'public', 'data', 'chess_rooms', currentRoomId);
-      await updateDoc(roomRef, {
+      await applyRoomStateUpdate({
         status: roomData.guestId ? 'playing' : 'waiting',
         hostSide: newHostSide,
         guestSide: newGuestSide,
@@ -2416,6 +2781,7 @@
         capturedBlack: [],
         lastMove: null,
         inCheckSide: null,
+        consecutiveChecks: { red: 0, black: 0 },
         winner: null,
         winReason: '',
         redTimeLeft: initialTotal,
@@ -2570,54 +2936,70 @@
 
       if (!hasOpponent) {
         topName.textContent = '等待對手加入...';
-        topBadge.textContent = '空位';
-        topOnlineDot.className = 'w-2 h-2 rounded-full bg-amber-400 animate-ping';
-        topOnlineText.textContent = '請分享房間連結邀請好友';
+        topBadge.textContent = '未入座';
+        topBadge.className = 'px-2 py-0.5 rounded-md text-[11px] font-bold bg-stone-800 text-stone-400';
+        topAvatar.textContent = '？';
+        topAvatar.className = 'w-10 h-10 rounded-full bg-stone-800 border-2 border-stone-600 flex items-center justify-center font-serif-tc font-black text-stone-400 text-lg shadow-md';
+        topOnlineDot.className = 'w-2 h-2 rounded-full bg-stone-600';
+        topOnlineText.textContent = '等待掃碼或輸入房號加入';
       } else {
-        topName.textContent = myRole === 'host'
-          ? (roomData.guestName || '挑戰者（好友）')
-          : (roomData.hostName || '房主（好友）');
-        topOnlineDot.className = isOppOnline
-          ? 'w-2 h-2 rounded-full bg-emerald-400'
-          : 'w-2 h-2 rounded-full bg-stone-500';
-        topOnlineText.textContent = isOppOnline ? '已連線' : '連線較慢 / 離線';
+        const oppDisplayName = myRole === 'host'
+          ? (roomData.guestName || '挑戰者')
+          : (roomData.hostName || '房主');
+        topName.textContent = oppDisplayName;
 
         if (oppSide === 'red') {
           topBadge.textContent = '紅方';
           topBadge.className = 'px-2 py-0.5 rounded-md text-[11px] font-bold bg-red-900/60 text-red-200 border border-red-700/50';
           topAvatar.textContent = '帥';
-          topAvatar.className = 'w-9 h-9 rounded-full bg-amber-100 border-2 border-red-700 flex items-center justify-center font-serif-tc font-bold text-red-700 text-base';
+          topAvatar.className = 'w-10 h-10 rounded-full bg-amber-100 border-2 border-red-700 flex items-center justify-center font-serif-tc font-black text-red-700 text-lg shadow-md';
         } else if (oppSide === 'black') {
           topBadge.textContent = '黑方';
           topBadge.className = 'px-2 py-0.5 rounded-md text-[11px] font-bold bg-stone-800 text-stone-200 border border-stone-600';
           topAvatar.textContent = '將';
-          topAvatar.className = 'w-9 h-9 rounded-full bg-amber-100 border-2 border-stone-800 flex items-center justify-center font-serif-tc font-bold text-stone-900 text-base';
+          topAvatar.className = 'w-10 h-10 rounded-full bg-amber-100 border-2 border-stone-800 flex items-center justify-center font-serif-tc font-black text-stone-900 text-lg shadow-md';
         } else {
-          topBadge.textContent = '等待中';
-          topBadge.className = 'px-2 py-0.5 rounded-md text-[11px] font-bold bg-stone-800 text-stone-400';
-          topAvatar.textContent = '將';
-          topAvatar.className = 'w-9 h-9 rounded-full bg-stone-800 border-2 border-stone-600 flex items-center justify-center font-serif-tc font-bold text-stone-400 text-base';
+          topBadge.textContent = '待翻棋定色';
+          topBadge.className = 'px-2 py-0.5 rounded-md text-[11px] font-bold bg-amber-900/50 text-amber-200 border border-amber-700/50';
+          topAvatar.textContent = '棋';
+          topAvatar.className = 'w-10 h-10 rounded-full bg-stone-800 border-2 border-amber-600/60 flex items-center justify-center font-serif-tc font-black text-amber-200 text-lg shadow-md';
+        }
+
+        if (isAiMode || isOppOnline) {
+          topOnlineDot.className = 'w-2 h-2 rounded-full bg-emerald-400';
+          topOnlineText.textContent = isAiMode ? 'AI 引擎就緒' : '在線對弈中';
+        } else {
+          topOnlineDot.className = 'w-2 h-2 rounded-full bg-amber-500 animate-pulse';
+          topOnlineText.textContent = '連線暫時離線';
         }
       }
 
-      // 回合提示徽章與玩家狀態列呼吸光暈
+      // 回合指示與呼吸光暈
       const myTurnNow = isMyTurn();
-      const oppTurnNow = !myTurnNow && roomData.status === 'playing' && hasOpponent;
-      document.getElementById('bottomTurnBadge').classList.toggle('hidden', !myTurnNow);
-      document.getElementById('topTurnBadge').classList.toggle('hidden', !oppTurnNow);
+      const topTurnBadge = document.getElementById('topTurnBadge');
+      const bottomTurnBadge = document.getElementById('bottomTurnBadge');
+      const topPlayerBar = document.getElementById('topPlayerBar');
+      const bottomPlayerBar = document.getElementById('bottomPlayerBar');
 
-      const bottomBar = document.getElementById('bottomPlayerBar');
-      const topBar = document.getElementById('topPlayerBar');
-      bottomBar.classList.remove('active-turn-glow-red', 'active-turn-glow-amber');
-      topBar.classList.remove('active-turn-glow-red', 'active-turn-glow-amber');
+      topPlayerBar.classList.remove('active-turn-glow-red', 'active-turn-glow-amber');
+      bottomPlayerBar.classList.remove('active-turn-glow-red', 'active-turn-glow-amber');
 
-      if (myTurnNow) {
-        bottomBar.classList.add(mySide === 'red' ? 'active-turn-glow-red' : 'active-turn-glow-amber');
-      } else if (oppTurnNow) {
-        topBar.classList.add(oppSide === 'red' ? 'active-turn-glow-red' : 'active-turn-glow-amber');
+      if (roomData.status === 'playing' && hasOpponent) {
+        if (myTurnNow) {
+          bottomTurnBadge.classList.remove('hidden');
+          topTurnBadge.classList.add('hidden');
+          bottomPlayerBar.classList.add(mySide === 'red' ? 'active-turn-glow-red' : 'active-turn-glow-amber');
+        } else {
+          topTurnBadge.classList.remove('hidden');
+          bottomTurnBadge.classList.add('hidden');
+          topPlayerBar.classList.add(oppSide === 'red' ? 'active-turn-glow-red' : 'active-turn-glow-amber');
+        }
+      } else {
+        topTurnBadge.classList.add('hidden');
+        bottomTurnBadge.classList.add('hidden');
       }
 
-      // 狀態橫幅
+      // 狀態橫幅（含建議 6：連續將軍提醒）
       const banner = document.getElementById('statusBanner');
       banner.classList.remove('animate-check', 'bg-red-950/90', 'border-red-500', 'text-red-200');
       if (roomData.status === 'waiting' || !hasOpponent) {
@@ -2626,7 +3008,10 @@
         banner.textContent = `🏁 對局結束：${roomData.winReason}`;
       } else if (roomData.inCheckSide) {
         const checkedName = roomData.inCheckSide === 'red' ? '紅方' : '黑方';
-        banner.textContent = `⚠️ 將軍！${checkedName}帥/將正在遭受攻擊！`;
+        const attackerSide = roomData.inCheckSide === 'red' ? 'black' : 'red';
+        const checkStreak = (roomData.consecutiveChecks && roomData.consecutiveChecks[attackerSide]) || 1;
+        const streakNote = checkStreak >= 3 ? `（已連續將軍 ${checkStreak} 次，請注意棋規禁例）` : '';
+        banner.textContent = `⚠️ 將軍！${checkedName}帥/將正在遭受攻擊！${streakNote}`;
         banner.classList.add('animate-check', 'bg-red-950/90', 'border-red-500', 'text-red-200');
       } else if (roomData.mode === 'dark' && !mySide) {
         banner.textContent = myTurnNow
@@ -2635,7 +3020,7 @@
       } else {
         banner.textContent = myTurnNow
           ? '🟢 輪到你的回合，請選擇棋子移動'
-          : '⏳ 等待對手思考走棋...';
+          : (isAiMode ? '🤖 電腦 AI 正在思考走棋...' : '⏳ 等待對手思考走棋...');
       }
 
       // 按鈕啟用狀態
@@ -2645,21 +3030,66 @@
       document.getElementById('btnDraw').disabled = !isPlaying;
       document.getElementById('btnResign').disabled = !isPlaying;
       document.getElementById('btnRematch').classList.toggle('hidden', roomData.status !== 'finished');
+
       // 更新計時器、棋盤兩側陣亡棋子與對戰記錄
       updateTimerDisplays();
       renderCapturedLists();
       renderMoveLogs();
 
-      // 渲染對應棋盤
+      // 渲染對應棋盤與暗棋未翻統計
+      const darkRemainingPanel = document.getElementById('darkRemainingPanel');
       if (roomData.mode === 'standard') {
         document.getElementById('standardBoardContainer').classList.remove('hidden');
         document.getElementById('darkBoardContainer').classList.add('hidden');
+        darkRemainingPanel.classList.add('hidden');
         renderStandardBoard();
       } else {
         document.getElementById('standardBoardContainer').classList.add('hidden');
         document.getElementById('darkBoardContainer').classList.remove('hidden');
+        darkRemainingPanel.classList.remove('hidden');
+        renderDarkRemainingStats();
         renderDarkBoard();
       }
+    }
+
+    // 建議 2：渲染暗棋「尚未翻開暗子數量統計表」
+    function renderDarkRemainingStats() {
+      const board = JSON.parse(roomData.boardJson);
+      const hiddenCounts = {
+        red: { K: 0, A: 0, E: 0, R: 0, H: 0, C: 0, P: 0 },
+        black: { K: 0, A: 0, E: 0, R: 0, H: 0, C: 0, P: 0 }
+      };
+      let totalHidden = 0;
+
+      for (let r = 0; r < 8; r++) {
+        for (let c = 0; c < 4; c++) {
+          const p = board[r][c];
+          if (p && !p.revealed) {
+            hiddenCounts[p.side][p.type]++;
+            totalHidden++;
+          }
+        }
+      }
+
+      document.getElementById('darkHiddenTotalCount').textContent = totalHidden;
+      const order = roomData.darkRule === 'classic'
+        ? ['K', 'A', 'E', 'R', 'H', 'C', 'P']
+        : ['K', 'R', 'H', 'C', 'A', 'E', 'P'];
+
+      const buildRowHtml = (side) => {
+        const title = side === 'red'
+          ? '<span class="font-bold text-red-400 mr-1">紅暗子:</span>'
+          : '<span class="font-bold text-stone-300 mr-1">黑暗子:</span>';
+        const items = order.map(t => {
+          const cnt = hiddenCounts[side][t];
+          const cls = cnt > 0 ? 'text-amber-100 font-bold' : 'text-stone-600 line-through';
+          return `<span class="${cls}">${PIECE_NAMES[side][t]}×${cnt}</span>`;
+        }).join('');
+        return title + items;
+      };
+
+      document.getElementById('darkRemainingRedRow').innerHTML = buildRowHtml('red');
+      document.getElementById('darkRemainingBlackRow').innerHTML = buildRowHtml('black');
     }
 
     // 渲染棋盤兩側陣亡棋子列表（上方/左側顯示吃掉的敵子，下方/右側顯示我方陣亡棋子）
@@ -2883,6 +3313,7 @@
 
       // 建立與加入房間按鈕
       document.getElementById('btnCreateRoom').addEventListener('click', createRoom);
+      document.getElementById('btnStartAiGame').addEventListener('click', startAiGame);
       document.getElementById('btnJoinRoom').addEventListener('click', () => {
         const code = document.getElementById('roomCodeInput').value;
         joinRoom(code);
@@ -2890,6 +3321,20 @@
       document.getElementById('roomCodeInput').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           joinRoom(e.target.value);
+        }
+      });
+
+      // 清除戰績按鈕
+      document.getElementById('btnClearRecords').addEventListener('click', () => {
+        try { localStorage.removeItem(RECORDS_STORAGE_KEY); } catch (e) {}
+        renderMatchRecordsUI();
+        showToast('已清除本機戰績紀錄', 'info');
+      });
+
+      // 頁面重新可見時自動重新請求螢幕常亮
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && currentRoomId) {
+          requestScreenWakeLock();
         }
       });
 
@@ -2978,6 +3423,15 @@
     async function initApp() {
       initStandardBoardMarks();
       setupUIEvents();
+      renderMatchRecordsUI();
+
+      // 載入已儲存的棋手大名
+      try {
+        const savedName = localStorage.getItem(NAME_STORAGE_KEY);
+        if (savedName) {
+          document.getElementById('playerNameInput').value = savedName;
+        }
+      } catch (e) {}
 
       if (!firebaseConfig) {
         connectionDot.className = 'w-2 h-2 rounded-full bg-red-500';
@@ -3001,19 +3455,35 @@
         connectionDot.className = 'w-2 h-2 rounded-full bg-emerald-400';
         connectionText.textContent = '雲端已連線';
 
-        // 檢查網址是否帶有 ?room=XXXXXX 邀請參數，若有則自動加入房間
+        // 檢查網址 ?room=XXXX 或斷線重連 sessionStorage
         const params = new URLSearchParams(window.location.search);
         const urlRoom = params.get('room');
-        if (urlRoom && !hasHandledUrlRoom) {
+        let sessionRoom = null;
+        try { sessionRoom = sessionStorage.getItem(ACTIVE_ROOM_SESSION_KEY); } catch (e) {}
+
+        const targetRoom = urlRoom || sessionRoom;
+        if (targetRoom && !hasHandledUrlRoom) {
           hasHandledUrlRoom = true;
-          document.getElementById('roomCodeInput').value = urlRoom;
-          await joinRoom(urlRoom);
+          document.getElementById('roomCodeInput').value = targetRoom;
+          const currentName = document.getElementById('playerNameInput').value.trim();
+          if (currentName) {
+            await joinRoom(targetRoom, true);
+          } else {
+            promptNameForDirectJoin(targetRoom);
+          }
         }
       } catch (err) {
         console.error('驗證初始化失敗:', err);
         connectionDot.className = 'w-2 h-2 rounded-full bg-red-500';
         connectionText.textContent = '連線失敗';
-        showToast('雲端驗證失敗，請重新整理頁面', 'error');
+        const errCode = err?.code || '';
+        if (errCode === 'auth/unauthorized-domain') {
+          showToast('網域未授權：請至 Firebase Auth 設定加入 csfclayton.github.io', 'error');
+        } else if (errCode === 'auth/operation-not-allowed') {
+          showToast('未開啟匿名登入：請至 Firebase Auth 啟用 Anonymous', 'error');
+        } else {
+          showToast(`雲端驗證失敗 (${errCode || '請檢查 Firebase 設定'})`, 'error');
+        }
       }
     }
 
